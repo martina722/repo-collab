@@ -1,6 +1,19 @@
 h1 {
-    color:red
+    color: red;
 }
+
 p {
-    color:black
+    color: black;
+}
+
+.giallo {
+    color: yellow;
+}
+
+.yellow {
+    color: yellow;
+}
+
+a {
+    color: green;
 }
