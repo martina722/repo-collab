@@ -12,12 +12,12 @@ div {
     color: red;
 }
 
-div:nth-child(odd):hover {
+.contenitore-div div:nth-child(odd):hover {
     background-color: blue;
     color: yellow;
 }
 
-div:nth-child(even):hover {
+.contenitore-div div:nth-child(even):hover {
     background-color: red;
     color: yellow;
 }
