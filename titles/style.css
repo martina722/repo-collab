@@ -1,0 +1,16 @@
+h1 {
+    color:red
+}
+
+h3 {
+    color: yellow
+}
+
+h2:first-child {
+    color: blue
+}
+
+h2:nth-child(2) {
+    color: green
+}
+
