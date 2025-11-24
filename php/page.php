@@ -14,6 +14,9 @@
         $numero_div = 15;
         for ($i = 1; $i <= $numero_div; $i++) {
             echo "<div>Questo è il div numero $i</div>";
+
+            // oppure usando la funzione scritta sotto
+            //printDiv("Questo è il div numero $i", "numerati");
         };
         ?>
     </div>
