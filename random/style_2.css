@@ -1,0 +1,17 @@
+h1 {
+    background-color: blue;
+    color: white;
+}
+
+.contenitore-div div:nth-child(odd) {
+    color: black;
+}
+
+.contenitore-div div:nth-child(even) {
+    background-color: black;
+    color: white;
+}
+
+.ultimo {
+    color: green;
+}

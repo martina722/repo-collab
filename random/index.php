@@ -10,6 +10,17 @@ function printDiv($text, $class) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prova</title>
+
+    <!-- collegamento random a diversi file css -->
+    <?php
+    function random_css() {
+        $css_files = ['style1.css', 'style2.css', 'style3.css'];
+        $random_index = array_rand($css_files);
+        return $css_files[$random_index];
+    }
+    ?>
+    <link rel="stylesheet" href="<?php echo random_css(); ?>">
+
 </head>
 <body>
     <h1>CSS casuali!!!</h1>
