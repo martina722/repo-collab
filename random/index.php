@@ -1,7 +1,7 @@
 <?php
-function crea_div($text, $class) {
-            echo "<div class='" . $class . "'>" . $text . "</div>";
-        };
+function printDiv($text, $class) {
+    echo "<div class='" . $class . "'>" . $text . "</div>";
+};
 ?>
 
 <!DOCTYPE html>
@@ -17,8 +17,8 @@ function crea_div($text, $class) {
         <?php
         for ($i = 1; $i <= 10; $i++) :
             if ($i % 2 == 0) :
-                echo crea_div ("questo è un div pari", "contenitore-div");
-                else : echo crea_div ("questo è un div disapri");
+                echo printDiv("questo è un div pari", "contenitore-div");
+                else : echo printDiv("questo è un div disapri", "contenitore-div");
             endif;
         endfor;
         ?>
