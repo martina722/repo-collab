@@ -19,3 +19,18 @@
     </div>
     <div class="ultimo">Questa è la fine della pagina</div>
 </body>
+</html>
+
+<?php
+
+/**
+ * receives a string and prints a div containing the string
+ * @param string $text
+ * @return void
+ */
+
+function printDiv($text): void {
+    echo "<div>$text</div>";
+};
+
+?>
