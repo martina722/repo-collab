@@ -14,7 +14,7 @@
         $numero_div = 15;
         for ($i = 1; $i <= $numero_div; $i++) {
             echo "<div>Questo è il div numero $i</div>";
-        }
+        };
         ?>
     </div>
     <div class="ultimo">Questa è la fine della pagina</div>
