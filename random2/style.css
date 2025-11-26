@@ -1,18 +1,18 @@
-h1 {
+.rosso {
     color: red
 }
 
-.contenitore-div div:nth-child(odd) {
+.casuali div:nth-child(odd) {
     background-color: grey;
     color: white;
 }
 
-.contenitore-div div:nth-child(even) {
+.casuali div:nth-child(even) {
     background-color: black;
     color: white;
 }
 
-.ultimo {
+.fine {
     background-color: red;
     color: white;
 }
