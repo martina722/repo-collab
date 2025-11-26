@@ -11,7 +11,10 @@
         <?php
         $numero = rand(5, 30);
         for ($i = 1; $i < $numero; $i++) {
+            $randomColor = rand(1, 4);
+            for ($i = 1; $i < $randomColor; $i++) {
                 echo "<div class='casuali'></div>";
+            }
         }
         ?>
     <div class="end">fine pagina</div>
