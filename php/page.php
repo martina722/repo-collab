@@ -25,7 +25,6 @@
 </html>
 
 
-
 <?php
 // Metodo con funzione
 
