@@ -3,11 +3,11 @@ h1 {
     color: white;
 }
 
-.contenitore-div div:nth-child(odd) {
+.pari {
     color: black;
 }
 
-.contenitore-div div:nth-child(even) {
+.dispari {
     background-color: black;
     color: white;
 }

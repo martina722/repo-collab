@@ -20,15 +20,15 @@ function printDiv($text, $class) {
 </head>
 <body>
     <h1>CSS casuali!!!</h1>
-    <div class="contenitore-div">
+    <div>
         <?php
         for ($i = 1; $i <= 10; $i++) :
             if ($i % 2 == 0) :
-                echo printDiv("questo è un div pari", "contenitore-div");
-                else : echo printDiv("questo è un div disapri", "contenitore-div");
+                echo printDiv("questo è un div pari", "pari");
+                else : echo printDiv("questo è un div disapri", "dispari");
             endif;
         endfor;
-        ?>
-        
+        ?> 
+    </div>
 </body>
 </html>
