@@ -11,15 +11,11 @@ function printDiv($text, $class) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prova</title>
 
-    <!-- collegamento random a diversi file css -->
-    <?php
-    function random_css() {
-        $css_files = ['style1.css', 'style2.css', 'style3.css'];
-        $random_index = array_rand($css_files);
-        return $css_files[$random_index];
-    }
+    <!-- collegamento random a diversi file css utilizzando la funzione RAND(<min>,<max>) -->
+    <?php 
+    $randomCss = rand(1, 3);
+    echo "<link rel='stylesheet' href='style_" . $randomCss . ".css'>";
     ?>
-    <link rel="stylesheet" href="<?php echo random_css(); ?>">
 
 </head>
 <body>
