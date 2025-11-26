@@ -1,5 +1,6 @@
 .rosso {
     color: red;
+
 }
 
 .casuali {
@@ -11,4 +12,20 @@
 .end {
     background-color: red;
     color: white;
+}
+
+.casuale1 {
+    background-color: red;
+}
+
+.casuale2 {
+    background-color: green;
+}
+
+.casuale3 {
+    background-color: blue;
+}
+
+.casuale4 {
+    background-color: yellow;
 }
