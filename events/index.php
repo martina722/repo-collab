@@ -14,13 +14,13 @@ function printDiv($text, $class) {
 </head>
 <body>
     <h1>Eventi Javascript</h1>
+    <button id="click-me-button">Clicca per cambiare colore!</button>
     <?php
         $numeroDiv = 20;
         for ($i = 1; $i <= $numeroDiv; $i++) {
             printDiv("", "giallo");
         }
     ?>
-    <button>Clicca per cambiare colore!</button>
     <script src="events.js"></script>
 </body>
 </html>
