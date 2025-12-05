@@ -1,3 +1,4 @@
+/*
 // funzione generale
 function changeColor(buttonId, className, color) {
     let clickmeButton = document.getElementById(buttonId);
@@ -12,8 +13,8 @@ function changeColor(buttonId, className, color) {
 changeColor('rosso', 'div', 'red');
 changeColor('giallo', 'div', 'yellow');
 changeColor('blu', 'div', 'blue');
+*/
 
-/*
 //bottone rosso
 let clickmeButton = document.getElementById("rosso");
 clickmeButton.addEventListener ('click', function() {
@@ -41,4 +42,9 @@ clickmeButton.addEventListener('click', function() {
                 }
         }
 );
-*/
+// bottone che alterna i colori
+clickmeButton = document.getElementById("altern");
+clickmeButton.addEventListener('click', function() {
+        let divs = document.getElementsByClassName("div");
+        for (i = 0; i < div)
+})
