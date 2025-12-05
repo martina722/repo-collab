@@ -17,19 +17,16 @@ changeColor('blu', 'div', 'blue');
 //bottone rosso
 let clickmeButton = document.getElementById("rosso");
 clickmeButton.addEventListener ('click', function() {
-                let redColor = document.getElementsByClassName("giallo");
+                let redColor = document.getElementsByClassName("div");
                 for (i = 0; i < redColor.length; i++) {
                         redColor[i].style.backgroundColor = "red";
                 }
         }
 );
-<<<<<<< HEAD
-
-=======
 //bottone giallo
 clickmeButton = document.getElementById("giallo");
 clickmeButton.addEventListener('click', function() {
-        let yellowColor = document.getElementsByClassName("giallo");
+        let yellowColor = document.getElementsByClassName("div");
         for (i = 0; i < yellowColor.length; i++) {
                         yellowColor[i].style.backgroundColor = "yellow";
                 }
@@ -38,11 +35,10 @@ clickmeButton.addEventListener('click', function() {
 //bottone blu
 clickmeButton = document.getElementById("blu");
 clickmeButton.addEventListener('click', function() {
-        let blueColor = document.getElementsByClassName("giallo");
+        let blueColor = document.getElementsByClassName("div");
         for (i = 0; i < blueColor.length; i++) {
                         blueColor[i].style.backgroundColor = "blue";
                 }
         }
 );
 */
->>>>>>> d55d7d733533575c22d571ab1766ab23a306fe9f
