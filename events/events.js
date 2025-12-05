@@ -58,12 +58,15 @@ clickmeButton.addEventListener('click', function() {
                 }
         }
         /* oppure
+        // parto da 0 e vado avanti di 3
         for (i = 0; i < divs.length; i+=3) {
                 divs[i].style.backgroundColor = "red";
         }
+        // parto da 1 e vado avanti di 3
         for (i = 1; i < divs.length; i+=3) {
                 divs[i].style.backgroundColor = "red";
         }
+        // parto da 2 e vado avanti di 3
         for (i = 2; i < divs.length; i+=3) {
                 divs[i].style.backgroundColor = "red";
         }
