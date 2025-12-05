@@ -42,9 +42,19 @@ clickmeButton.addEventListener('click', function() {
                 }
         }
 );
-// bottone che alterna i colori
+// bottone che alterna i colori alternati progressivamente rosso, giallo, blu
 clickmeButton = document.getElementById("altern");
 clickmeButton.addEventListener('click', function() {
         let divs = document.getElementsByClassName("div");
-        for (i = 0; i < div)
+        for (i = 0; i < divs.length; i++) {
+                if (i % 3 == 0) {
+                        divs[i].style.backgroundColor = "red";
+                }
+                else if (i % 3 == 1) {
+                        divs[i].style.backgroundColor = "yellow";
+                }
+                else {
+                        divs[i].style.backgroundColor = "blue";
+                }
+        }
 })
