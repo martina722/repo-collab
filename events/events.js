@@ -57,4 +57,15 @@ clickmeButton.addEventListener('click', function() {
                         divs[i].style.backgroundColor = "blue";
                 }
         }
+        /* oppure
+        for (i = 0; i < divs.length; i+=3) {
+                divs[i].style.backgroundColor = "red";
+        }
+        for (i = 1; i < divs.length; i+=3) {
+                divs[i].style.backgroundColor = "red";
+        }
+        for (i = 2; i < divs.length; i+=3) {
+                divs[i].style.backgroundColor = "red";
+        }
+        */
 })
