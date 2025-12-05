@@ -23,9 +23,6 @@ clickmeButton.addEventListener ('click', function() {
                 }
         }
 );
-<<<<<<< HEAD
-
-=======
 //bottone giallo
 clickmeButton = document.getElementById("giallo");
 clickmeButton.addEventListener('click', function() {
@@ -45,4 +42,3 @@ clickmeButton.addEventListener('click', function() {
         }
 );
 */
->>>>>>> d55d7d733533575c22d571ab1766ab23a306fe9f
