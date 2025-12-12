@@ -17,6 +17,7 @@ function printDiv($text, $class) {
     <button id="rosso">Rosso</button>
     <button id="giallo">giallo</button>
     <button id="blu">blu</button>
+    <button id="altern">alterna</button>
     <?php
         $numeroDiv = 20;
         for ($i = 1; $i <= $numeroDiv; $i++) {
