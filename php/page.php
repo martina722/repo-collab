@@ -1,3 +1,6 @@
+<?php
+require_once '../lib/libreria.php'
+?>
 <!DOCTYPE html>
 <html lang="it">
 <head>  
@@ -13,28 +16,14 @@
         // dato un numero 15 crea 15 div numerati da 1 a 15
         $numero_div = 15;
         for ($i = 1; $i <= $numero_div; $i++) {
-            echo "<div>Questo è il div numero $i</div>";
+            // metodo senza funzione
+            // echo "<div>Questo è il div numero $i</div>";
 
-            // oppure usando la funzione scritta sotto
-            //printDiv("Questo è il div numero $i", "numerati");
+            // oppure usando la funzione
+            printDiv("Questo è il div numero $i", "numerati");
         };
         ?>
     </div>
     <div class="ultimo">Questa è la fine della pagina</div>
 </body>
 </html>
-
-
-<?php
-// Metodo con funzione
-
-/**
- * receives a string and prints a div containing the string
- * @param string $text
- * @return void
- */
-function printDiv($text, $class) {
-    echo "<div class='" . $class . "'>" . $text . "</div>";
-};
-
-?>

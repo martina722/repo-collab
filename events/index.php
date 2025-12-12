@@ -1,7 +1,5 @@
 <?php
-function printDiv($text, $class) {
-    echo "<div class='" . $class . "'>" . $text . "</div>";
-};
+require_once '../lib/libreria.php'
 ?>
 
 <!DOCTYPE html>
