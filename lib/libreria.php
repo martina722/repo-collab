@@ -8,4 +8,14 @@
 function printDiv($text, $class) {
     echo "<div class='" . $class . "'>" . $text . "</div>";
 };
+
+/**
+ * Generatore di div random con classe specifica
+ */
+function genRandomDiv($min, $max, $class, $text = "") {
+    $numero = rand($min, $max);
+        for ($i = 1; $i <= $numero; $i++) {
+            echo "<div class='" . $class . "'>" . $text . "</div>";
+        }
+}
 ?>
