@@ -77,7 +77,15 @@ clickmeButton = document.getElementById("arancione");
 clickmeButton.addEventListener('click', function() {
         let divs = document.getElementsByClassName("div");
         for (i = 0; i < divs.length; i++) {
-                        divs[i].style.backgroundColor = "arancione";
+                        divs[i].style.backgroundColor = "orange";
         }
 });
 
+
+clickmeButton = document.getElementById("verde");
+clickmeButton.addEventListener('click', function() {
+        let divs = document.getElementsByClassName("div");
+        for (i = 0; i < divs.length; i++) {
+                        divs[i].style.backgroundColor = "green";
+        }
+});
