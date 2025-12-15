@@ -10,7 +10,7 @@ function printDiv($text, $class) {
 };
 
 /**
- * Generatore di div random con classe e testo specifici
+ * Generatore di un numero random di div con classe e testo specifici
  * @param int $min Numero minimo di div da generare
  * @param int $max Numero massimo di div da generare
  * @param string $class La classe CSS da assegnare al div
