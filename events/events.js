@@ -71,4 +71,13 @@ clickmeButton.addEventListener('click', function() {
                 divs[i].style.backgroundColor = "red";
         }
         */
-})
+});
+
+clickmeButton = document.getElementById("arancione");
+clickmeButton.addEventListener('click', function() {
+        let divs = document.getElementsByClassName("div");
+        for (i = 0; i < divs.length; i++) {
+                        divs[i].style.backgroundColor = "arancione";
+        }
+});
+

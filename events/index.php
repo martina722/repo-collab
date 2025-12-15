@@ -16,6 +16,7 @@ require_once '../lib/libreria.php'
     <button id="giallo">giallo</button>
     <button id="blu">blu</button>
     <button id="altern">alterna</button>
+    <button id="arancione">colore arancione</button>
     <?php
         $numeroDiv = 20;
         for ($i = 1; $i <= $numeroDiv; $i++) {
