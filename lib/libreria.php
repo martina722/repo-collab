@@ -17,7 +17,7 @@ function printDiv($text, $class) {
  * @param string $text Il testo da inserire nel div
  * @return void
  */
-function genRandomDiv($min, $max, $class, $text = "") {
+function genRandomDivs($min, $max, $class, $text = "") {
     $numero = rand($min, $max);
         for ($i = 1; $i <= $numero; $i++) {
             echo "<div class='" . $class . "'>" . $text . "</div>";

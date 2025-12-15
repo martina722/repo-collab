@@ -21,13 +21,13 @@ require_once '../lib/libreria.php'
         Primo gruppo
     </h2>
     <?php
-        genRandomDiv(5, 10, "primo-gruppo tutti");
+        genRandomDivs(5, 10, "primo-gruppo tutti");
     ?>
     <h2>
         Secondo gruppo
     </h2>
     <?php
-        genRandomDiv(10, 15, "secondo-gruppo tutti");
+        genRandomDivs(10, 15, "secondo-gruppo tutti");
     ?>
     <script src="groups.js"></script>
 </body>
