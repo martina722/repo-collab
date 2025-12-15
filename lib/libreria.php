@@ -5,8 +5,8 @@
  * @param string $class La classe CSS da assegnare al div
  * @return void
  */
-function printDiv($text, $class) {
-    echo "<div class='" . $class . "'>" . $text . "</div>";
+function printDiv($text, $class, $id = "") {
+    echo "<div id ='" . $id . "' class='" . $class . "'>" . $text . "</div>";
 };
 
 /**
@@ -20,7 +20,7 @@ function printDiv($text, $class) {
 function genRandomDivs($min, $max, $class, $text = "") {
     $numero = rand($min, $max);
         for ($i = 1; $i <= $numero; $i++) {
-            echo "<div class='" . $class . "'>" . $text . "</div>";
+            printDiv($text, $class);
         }
 }
 ?>
