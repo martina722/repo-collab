@@ -20,15 +20,19 @@ require_once '../lib/libreria.php'
     <h2>
         Primo gruppo
     </h2>
-    <?php
-        genRandomDivs(5, 10, "primo-gruppo tutti");
-    ?>
+    <div class="display-inline">
+        <?php
+            genRandomDivs(5, 10, "primo-gruppo tutti");
+        ?>
+    </div>
     <h2>
         Secondo gruppo
     </h2>
-    <?php
-        genRandomDivs(10, 15, "secondo-gruppo tutti");
-    ?>
+    <div class="display-inline">
+        <?php
+            genRandomDivs(10, 15, "secondo-gruppo tutti");
+        ?>
+    </div>
     <script src="groups.js"></script>
 </body>
 </html>
