@@ -21,10 +21,7 @@ require_once '../lib/libreria.php'
         Primo gruppo
     </h2>
     <?php
-        $numero = rand(5, 10);
-        for ($i = 1; $i <= $numero; $i++) {
-            printDiv("", "primo-gruppo tutti");
-        }
+        genRandomDiv(5, 10, "primo-gruppo tutti");
     ?>
     <h2>
         Secondo gruppo
