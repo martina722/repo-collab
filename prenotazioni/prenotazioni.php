@@ -25,7 +25,7 @@
 
         //ciclo sulle righe restituite e stampo il valore di ogni riga
         while ($row = mysqli_fetch_assoc($result)) {
-            $clientiDivContent = '<h2>' . $row['arrivo'] . '</h2><p>' . $row['nome'] . ' ' . $row['cognome'] . '<br>' . $row['citta'] . '<br> Importo prenotazione: ' . $row['importo'] . '<br> Caparra: ' . $row['caparra'] . '<br> Saldo: ' . $row['saldo'] . '</p>';
+            $clientiDivContent = '<h2>' . $row['arrivo'] . '</h2><p>' . $row['nome'] . ' ' . $row['cognome'] . '<br>' . $row['citta'] . '<br> Importo prenotazione: ' . $row['importo'] . '<br> Caparra: ' . $row['caparra'] . '<br> <span class="saldo">Saldo: ' . $row['saldo'] . '</span></p>';
             printDiv($clientiDivContent, 'prenotazione');
         }
     ?>
