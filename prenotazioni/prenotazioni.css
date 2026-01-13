@@ -5,3 +5,6 @@ h2 {
     color: white;
     background-color: rgb(236, 10, 10);
 }
+.div {
+    border: 2px rgb(37, 34, 34);
+}
