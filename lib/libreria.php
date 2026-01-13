@@ -10,6 +10,22 @@ function printDiv($text, $class, $id = "") {
 };
 
 /**
+ * Connects a database
+ * @param string $host the database host
+ * @param string $username the database username
+ * @param string $password the database password
+ * @param string $dbname the database name
+ * @return mysqli the connection object
+ */
+function connectDatabase($dbname, $host = 'localhost', $username = 'root', $password = '') {
+	$mysqli = mysqli_connect($host, $username, $password, $dbname);
+	if (!$mysqli) {
+		die("Connection failed: " . mysqli_connect_error());
+	}
+	return $mysqli;
+};
+
+/**
  * Generatore di un numero random di div con classe e testo specifici
  * @param int $min Numero minimo di div da generare
  * @param int $max Numero massimo di div da generare
