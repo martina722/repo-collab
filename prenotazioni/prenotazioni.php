@@ -14,7 +14,7 @@
         require_once '../lib/libreria.php';
 
          //inizializza la connessione al database tramite funzione contenuta nella libreria
-        $dbConnection = connectDatabase('cescot');
+        $dbConnection = connectDatabase('prenotazioni');
 
         //esegui la query che legge la tabella clienti
         $query = 'SELECT clienti.nome, clienti.cognome, prenotazioni.arrivo, citta.citta, prenotazioni.importo, prenotazioni.caparra, prenotazioni.importo - prenotazioni.caparra AS saldo
