@@ -13,7 +13,7 @@
     <?php
         require_once '../lib/libreria.php'
 
-         //inizializza la connessione al database tramite funzione contenuta nella libreria libreria
+         //inizializza la connessione al database tramite funzione contenuta nella libreria
         $dbConnection = connectDatabase('cescot');
 
         //esegui la query che legge la tabella clienti
