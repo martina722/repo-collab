@@ -1,2 +1,2 @@
 <?php
-		require_once '../lib/library.php';
+		require_once '../lib2/library.php';
