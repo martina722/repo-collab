@@ -17,7 +17,7 @@
         $dbConnection = connectDatabase('prenotazioni');
 
         //esegui la query che legge la tabella clienti
-        $query = 'SELECT clienti.nome, clienti.cognome, prenotazioni.arrivo, citta.citta, prenotazioni.importo, prenotazioni.caparra, CEIL(prenotazioni.importo - prenotazioni.caparra) AS saldo
+        $query = 'SELECT clienti.nome, clienti.cognome, prenotazioni.arrivo, citta.citta, prenotazioni.importo, prenotazioni.caparra, ROUND(prenotazioni.importo - prenotazioni.caparra) AS saldo
             FROM clienti
             JOIN citta ON citta.id_citta = clienti.citta
             JOIN prenotazioni  ON prenotazioni.cliente = clienti.id_cliente';
