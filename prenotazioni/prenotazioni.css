@@ -8,3 +8,6 @@ h2 {
 .prenotazione {
     border: solid 2px rgb(37, 34, 34);
 }
+.saldo {
+    font-weight: bold;
+}
