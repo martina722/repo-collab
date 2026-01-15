@@ -7,6 +7,7 @@ h2 {
 }
 div {
     border: solid 2px rgb(37, 34, 34);
+    margin-bottom: 10px;
 }
 .saldo {
     font-weight: bold;
