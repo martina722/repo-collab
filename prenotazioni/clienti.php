@@ -24,7 +24,6 @@
             JOIN regioni ON regioni.id_regione = aree_geografiche.regione';
         $result = mysqli_query($dbConnection, $query);
 
-        //ciclo sulle righe restituite e stampo il valore di ogni riga
         while ($row = mysqli_fetch_assoc($result)) {
             $clientiDivContent = '<h2>' . $row['nome'] . ' ' . $row['cognome'] . '</h2><p>' . $row['regione'] . '<br>' . $row['area_geografica'] . '<br>' . $row['citta'] . '</p>';
             printDiv($clientiDivContent, 'cliente');
