@@ -17,15 +17,14 @@
         $dbConnection = connectDatabase('prenotazioni');
 
         //query
-        $query = 'SELECT clienti.nome, clienti.cognome, regioni.regione, aree_geografiche.area_geografica, citta.citta
-            FROM clienti
-            JOIN citta ON citta.id_citta = clienti.citta
-            JOIN aree_geografiche ON aree_geografiche.id_area = citta.area_geografica
-            JOIN regioni ON regioni.id_regione = aree_geografiche.regione';
+        $query = 'SELECT clienti.nome, clienti.cognome, regioni.regione, regioni.area_geografica, citta.citta
+        FROM citta
+        JOIN regioni ON regioni.ID_regione = citta.regione
+        JOIN clienti ON clienti.citta = citta.id_citta';
         $result = mysqli_query($dbConnection, $query);
 
         while ($row = mysqli_fetch_assoc($result)) {
-            $clientiDivContent = '<h2>' . $row['nome'] . ' ' . $row['cognome'] . '</h2><p>' . $row['regione'] . '<br>' . $row['area_geografica'] . '<br>' . $row['citta'] . '</p>';
+            $clientiDivContent = '<h2>' . $row['nome'] . ' ' . $row['cognome'] . '</h2><p>REGIONE: ' . $row['regione'] . '<br>AREA GEOGRAFICA: ' . $row['area_geografica'] . '<br>CITTA: ' . $row['citta'] . '</p>';
             printDiv($clientiDivContent, 'cliente');
         }
     ?>
