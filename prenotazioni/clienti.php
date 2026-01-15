@@ -25,7 +25,7 @@
 
         while ($row = mysqli_fetch_assoc($result)) {
             $clientiDivContent = '<h2>' . $row['nome'] . ' ' . $row['cognome'] . '</h2><p>REGIONE: ' . $row['regione'] . '<br>AREA GEOGRAFICA: ' . $row['area_geografica'] . '<br>CITTA: ' . $row['citta'] . '</p>';
-            printDiv($clientiDivContent, 'cliente');
+            printDiv($clientiDivContent, 'cliente display-inline-block');
         }
     ?>
 </body>
