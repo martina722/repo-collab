@@ -18,6 +18,8 @@
     <?php
         // prendo il valore inserito nel form
         $regione_da_cercare = isset($_GET['regione_inserita']) ? $_GET['regione_inserita'] : '';
+        // utilizzare l'alternativa con POST per la sicurezza (ricordare di cambiare anche il metodo del form)
+        // $regione_da_cercare = isset($_POST['regione_inserita']) ? $_POST['regione_inserita'] : '';
 
         require_once '../lib/libreria.php';
 
