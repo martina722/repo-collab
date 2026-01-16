@@ -41,7 +41,7 @@
             JOIN citta ON citta.regione = regioni.ID_regione
             JOIN clienti ON clienti.citta = citta.id_citta
             JOIN prenotazioni ON prenotazioni.cliente = clienti.id_cliente
-            WHERE regioni.regione = "' . $regione_da_cercare . '"
+            WHERE regioni.regione LIKE "%' . $regione_da_cercare . '%"
             GROUP BY regioni.regione';
 
         $result1 = mysqli_query($dbConnection, $query1);
