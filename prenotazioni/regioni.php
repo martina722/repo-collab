@@ -9,9 +9,10 @@
 <body>
     <h1>Regioni</h1>
     <form method="get">
-        <label for="regione_inserita">cerca regione:</label>
+        <label for="regione_inserita">Cerca regione:</label>
         <input type="text" name="regione_inserita" id="regione_inserita" required>
         <input type="submit" value="Cerca">
+        <button onclick="window.location.href='regioni.php'; return false;">Mostra tutte le regioni</button>
     </form>
     <br>
     <?php
