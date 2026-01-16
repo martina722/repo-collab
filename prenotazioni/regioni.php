@@ -10,7 +10,7 @@
     <h1>Regioni</h1>
     <form method="get">
         <label for="regione_inserita">Cerca regione:</label>
-        <input type="text" name="regione_inserita" id="regione_inserita" required>
+        <input type="text" name="regione_inserita" id="regione_inserita">
         <input type="submit" value="Cerca">
         <button onclick="window.location.href='regioni.php'; return false;">Mostra tutte le regioni</button>
     </form>
@@ -18,6 +18,8 @@
     <?php
         // prendo il valore inserito nel form
         $regione_da_cercare = isset($_GET['regione_inserita']) ? $_GET['regione_inserita'] : '';
+        // utilizzare l'alternativa con POST per la sicurezza (ricordare di cambiare anche il metodo del form)
+        // $regione_da_cercare = isset($_POST['regione_inserita']) ? $_POST['regione_inserita'] : '';
 
         require_once '../lib/libreria.php';
 
@@ -35,7 +37,7 @@
         $result = mysqli_query($dbConnection, $query);
         
         // query per ottenere le regioni filtrate in base al nome inserito
-        $query1 = 'SELECT regioni.regione, COUNT(prenotazioni.id_prenotazione) AS totale_prenotazioni,
+        $queryFiltrata = 'SELECT regioni.regione, COUNT(prenotazioni.id_prenotazione) AS totale_prenotazioni,
             ROUND(SUM(prenotazioni.importo), 2) AS totale_importo,
             ROUND(SUM(prenotazioni.importo - prenotazioni.caparra), 2) AS totale_saldo
             FROM regioni
@@ -45,11 +47,11 @@
             WHERE regioni.regione LIKE "%' . $regione_da_cercare . '%"
             GROUP BY regioni.regione';
 
-        $result1 = mysqli_query($dbConnection, $query1);
+        $resultFiltrato = mysqli_query($dbConnection, $queryFiltrata);
 
         // se nome da cercare è stato inserito mostra i risultati filtrati, altrimenti mostra tutti  risultati
         if (!empty($regione_da_cercare)) {
-            while ($row = mysqli_fetch_assoc($result1)) {
+            while ($row = mysqli_fetch_assoc($resultFiltrato)) {
                 $regioniDivContent = '<h2>' . $row['regione'] . '</h2><p>Num. prenotazioni: ' . $row['totale_prenotazioni'] . '<br>importo totale: ' . $row['totale_importo'] . '<br>saldo totale: ' . $row['totale_saldo'] . '</p>';
                 printDiv($regioniDivContent, 'cliente display-inline-block');
             }
