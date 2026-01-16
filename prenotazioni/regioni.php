@@ -45,11 +45,11 @@
             WHERE regioni.regione LIKE "%' . $regione_da_cercare . '%"
             GROUP BY regioni.regione';
 
-        $resultFiltrata = mysqli_query($dbConnection, $queryFiltrata);
+        $resultFiltrato = mysqli_query($dbConnection, $queryFiltrata);
 
         // se nome da cercare è stato inserito mostra i risultati filtrati, altrimenti mostra tutti  risultati
         if (!empty($regione_da_cercare)) {
-            while ($row = mysqli_fetch_assoc($resultFiltrata)) {
+            while ($row = mysqli_fetch_assoc($resultFiltrato)) {
                 $regioniDivContent = '<h2>' . $row['regione'] . '</h2><p>Num. prenotazioni: ' . $row['totale_prenotazioni'] . '<br>importo totale: ' . $row['totale_importo'] . '<br>saldo totale: ' . $row['totale_saldo'] . '</p>';
                 printDiv($regioniDivContent, 'cliente display-inline-block');
             }
