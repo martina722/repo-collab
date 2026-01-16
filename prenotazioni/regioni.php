@@ -31,6 +31,7 @@
         JOIN prenotazioni ON prenotazioni.cliente = clienti.id_cliente
         GROUP BY regioni.regione';
     $result = mysqli_query($dbConnection, $query);
+    
     // query per ottenere le regioni filtrate in base al nome inserito
     $query1 = 'SELECT regioni.regione, COUNT(prenotazioni.id_prenotazione) AS totale_prenotazioni,
         ROUND(SUM(prenotazioni.importo), 2) AS totale_importo,
