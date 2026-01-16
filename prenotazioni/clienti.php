@@ -10,8 +10,8 @@
     <h1>
         Clienti
     </h1>
-    <form action="submit" method="post">
-    <select id="regione_scelta" nome="scelta">
+    <form action="" method="post">
+    <select id="regione_scelta" name="regione_scelta">
         <option value="">-- seleziona --</option>
         <option value="emilia_romagna">emilia romagna</option>
         <option value="lombardia">lombardia</option>
@@ -37,7 +37,7 @@
     <input type="submit" value="Invia">
 </form>
 <?php
-    $regione_selezionata = isset($_GET['regione_scelta']) ? $_GET['regione_scelta'] : '';
+    $regione_selezionata = isset($_POST['regione_scelta']) ? $_POST['regione_scelta'] : '';
 
 
         require_once '../lib/libreria.php';
