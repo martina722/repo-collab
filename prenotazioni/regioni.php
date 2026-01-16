@@ -15,7 +15,7 @@
     </form>
     <br>
     <?php
-    $nome_da_cercare = isset($_GET['regione_inserita']) ? $_GET['regione_inserita'] : '';
+    $regione_da_cercare = isset($_GET['regione_inserita']) ? $_GET['regione_inserita'] : '';
 
     require_once '../lib/libreria.php';
 
@@ -33,7 +33,7 @@
     $result = mysqli_query($dbConnection, $query);
 
     // se nome da cercare è stato inserito mostra i risultati 
-    if (!empty($nome_da_cercare)) {
+    if (!empty($regione_da_cercare)) {
         $query1 = 'SELECT regioni.regione, COUNT(prenotazioni.id_prenotazione) AS totale_prenotazioni,
         ROUND(SUM(prenotazioni.importo), 2) AS totale_importo,
         ROUND(SUM(prenotazioni.importo - prenotazioni.caparra), 2) AS totale_saldo
@@ -41,18 +41,18 @@
         JOIN citta ON citta.regione = regioni.ID_regione
         JOIN clienti ON clienti.citta = citta.id_citta
         JOIN prenotazioni ON prenotazioni.cliente = clienti.id_cliente
-        WHERE regioni.regione = "' . $nome_da_cercare . '"
+        WHERE regioni.regione = "' . $regione_da_cercare . '"
         GROUP BY regioni.regione';
 
         $result1 = mysqli_query($dbConnection, $query1);
         while ($row = mysqli_fetch_assoc($result1)) {
-            $clientiDivContent = '<h2>' . $row['regione'] . '</h2><p>Num. prenotazioni: ' . $row['totale_prenotazioni'] . '<br>importo totale: ' . $row['totale_importo'] . '<br>saldo totale: ' . $row['totale_saldo'] . '</p>';
-            printDiv($clientiDivContent, 'cliente display-inline-block');
+            $regioniDivContent = '<h2>' . $row['regione'] . '</h2><p>Num. prenotazioni: ' . $row['totale_prenotazioni'] . '<br>importo totale: ' . $row['totale_importo'] . '<br>saldo totale: ' . $row['totale_saldo'] . '</p>';
+            printDiv($regioniDivContent, 'cliente display-inline-block');
         }
     }   else {
             while ($row = mysqli_fetch_assoc($result)) {
-            $clientiDivContent = '<h2>' . $row['regione'] . '</h2><p>Num. prenotazioni: ' . $row['totale_prenotazioni'] . '<br>importo totale: ' . $row['totale_importo'] . '<br>saldo totale: ' . $row['totale_saldo'] . '</p>';
-            printDiv($clientiDivContent, 'cliente display-inline-block');
+            $regioniDivContent = '<h2>' . $row['regione'] . '</h2><p>Num. prenotazioni: ' . $row['totale_prenotazioni'] . '<br>importo totale: ' . $row['totale_importo'] . '<br>saldo totale: ' . $row['totale_saldo'] . '</p>';
+            printDiv($regioniDivContent, 'cliente display-inline-block');
         }
     }
     ?>
