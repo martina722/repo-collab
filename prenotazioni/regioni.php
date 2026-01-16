@@ -46,7 +46,7 @@
 
         $result1 = mysqli_query($dbConnection, $query1);
 
-        // se nome da cercare è stato inserito mostra i risultati 
+        // se nome da cercare è stato inserito mostra i risultati filtrati, altrimenti mostra tutti  risultati
         if (!empty($regione_da_cercare)) {
             while ($row = mysqli_fetch_assoc($result1)) {
                 $regioniDivContent = '<h2>' . $row['regione'] . '</h2><p>Num. prenotazioni: ' . $row['totale_prenotazioni'] . '<br>importo totale: ' . $row['totale_importo'] . '<br>saldo totale: ' . $row['totale_saldo'] . '</p>';
