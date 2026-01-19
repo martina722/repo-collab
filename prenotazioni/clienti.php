@@ -53,7 +53,6 @@
         $tot_records_row = mysqli_fetch_array($tot_records_result);
         $tot_records = $tot_records_row[0];
 
-
         // 3. Calcolare pagine e offset
         $tot_pagine = ceil($tot_records / $risultati_per_pagina);
         $offset = ($pagina_corrente - 1) * $risultati_per_pagina;
@@ -70,8 +69,23 @@
             echo '<a href="?page=' . ($pagina_corrente + 1) . '&regione_scelta=' . $regione_selezionata . '">Avanti</a><br><br>';
         }
 
-        echo '<br><br>';
+        echo '<br>';
+        //stampa il numero totale di clienti a seconda della regione selezionata
+        $sql_count_filtrato = "SELECT COUNT(*) 
+            FROM citta
+            JOIN regioni ON regioni.ID_regione = citta.regione
+            JOIN clienti ON clienti.citta = citta.id_citta
+            WHERE regioni.regione LIKE '%" . $regione_selezionata . "%'";
+        $tot_records_result_filtrato = mysqli_query($dbConnection, $sql_count_filtrato);
+        $tot_records_row_filtrato = mysqli_fetch_array($tot_records_result_filtrato);
+        $tot_records_filtrato = $tot_records_row_filtrato[0];
 
+        if (!empty($regione_selezionata)) {
+            echo 'Totale clienti nella regione ' . ucfirst(str_replace('_', ' ', $regione_selezionata)) . ': ' . $tot_records_filtrato . '<br><br>';
+        } else {
+            echo 'Totale clienti: ' . $tot_records . '<br><br>';
+        }
+        
         //query
         $query = "SELECT clienti.nome, clienti.cognome, regioni.regione, regioni.area_geografica, citta.citta
         FROM citta
