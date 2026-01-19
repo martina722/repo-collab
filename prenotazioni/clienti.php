@@ -10,7 +10,7 @@
     <h1>
         Clienti
     </h1>
-    <form action="" method="post">
+    <form action="" method="get">
     <select id="regione_scelta" name="regione_scelta">
         <option value="">-- Seleziona una regione --</option>
         <option value="emilia_romagna">Emilia Romagna</option>
@@ -60,18 +60,17 @@
 
         // 4. Recuperare i dati
         $sql_dati = "SELECT * FROM clienti ORDER BY id DESC LIMIT $offset, $risultati_per_pagina"; // ... (esegui query e itera sui risultati)
+        $regione_selezionata = isset($_GET['regione_scelta']) ? $_GET['regione_scelta'] : '';
 
         // 5. Generare i link di paginazione indietro/avanti
         if ($pagina_corrente > 1) {
-            echo '<a href="?page=' . ($pagina_corrente - 1) . '">Indietro</a> - ';
+            echo '<a href="?page=' . ($pagina_corrente - 1) . '&regione_scelta=' . $regione_selezionata . '">Indietro</a> - ';
         } 
         if ($pagina_corrente < $tot_pagine) {
-            echo '<a href="?page=' . ($pagina_corrente + 1) . '">Avanti</a><br><br>';
+            echo '<a href="?page=' . ($pagina_corrente + 1) . '&regione_scelta=' . $regione_selezionata . '">Avanti</a><br><br>';
         }
 
         echo '<br><br>';
-
-        $regione_selezionata = isset($_POST['regione_scelta']) ? $_POST['regione_scelta'] : '';
 
         //query
         $query = "SELECT clienti.nome, clienti.cognome, regioni.regione, regioni.area_geografica, citta.citta
