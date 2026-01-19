@@ -12,27 +12,27 @@
     </h1>
     <form action="" method="post">
     <select id="regione_scelta" name="regione_scelta">
-        <option value="">-- Seleziona --</option>
-        <option value="emilia_romagna">emilia romagna</option>
-        <option value="lombardia">lombardia</option>
-        <option value="piemonte">piemonte</option>
-        <option value="veneto">veneto</option>
-        <option value="toscana">toscana</option>
-        <option value="lazio">lazio</option>
-        <option value="campania">campania</option>
-        <option value="sicilia">sicilia</option>
-        <option value="sardegna">sardegna</option>
-        <option value="puglia">puglia</option>
-        <option value="calabria">calabria</option>
-        <option value="abruzzo">abruzzo</option>
-        <option value="marche">marche</option>
-        <option value="umbria">umbria</option>
-        <option value="friuli_venezia_giulia">friuli venezia giulia</option>
-        <option value="trentino_alto_adige">trentino alto adige</option>
-        <option value="valle_d_aosta">valle d'aosta</option>
-        <option value="liguria">liguria</option>
-        <option value="basilicata">basilicata</option>
-        <option value="molise">molise</option>        
+        <option value="">-- Seleziona una regione --</option>
+        <option value="emilia_romagna">Emilia Romagna</option>
+        <option value="lombardia">Lombardia</option>
+        <option value="piemonte">Piemonte</option>
+        <option value="veneto">Veneto</option>
+        <option value="toscana">Toscana</option>
+        <option value="lazio">Lazio</option>
+        <option value="campania">Campania</option>
+        <option value="sicilia">Sicilia</option>
+        <option value="sardegna">Sardegna</option>
+        <option value="puglia">Puglia</option>
+        <option value="calabria">Calabria</option>
+        <option value="abruzzo">Abruzzo</option>
+        <option value="marche">Marche</option>
+        <option value="umbria">Umbria</option>
+        <option value="friuli_venezia_giulia">Friuli Venezia Giulia</option>
+        <option value="trentino_alto_adige">Trentino Alto Adige</option>
+        <option value="valle_d_aosta">Valle d'Aosta</option>
+        <option value="liguria">Liguria</option>
+        <option value="basilicata">Basilicata</option>
+        <option value="molise">Molise</option>        
     </select>
     <input type="submit" value="Invia">
 </form>
