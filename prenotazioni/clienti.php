@@ -70,7 +70,7 @@
         }
 
         echo '<br>';
-        //stampa il numero totale di clienti a seconda della regione selezionata
+        // 6. Stampa il numero totale di clienti a seconda della regione selezionata
         $sql_count_filtrato = "SELECT COUNT(*) 
             FROM citta
             JOIN regioni ON regioni.ID_regione = citta.regione
