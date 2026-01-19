@@ -64,7 +64,9 @@
         // 5. Generare i link di paginazione indietro/avanti
         if ($pagina_corrente > 1) {
             echo '<a href="?page=' . ($pagina_corrente - 1) . '&regione_scelta=' . $regione_selezionata . '">Indietro</a> - ';
-        } 
+        } else {
+            echo 'Indietro - ';
+        }
         if ($pagina_corrente < $tot_pagine) {
             echo '<a href="?page=' . ($pagina_corrente + 1) . '&regione_scelta=' . $regione_selezionata . '">Avanti</a><br><br>';
         }
