@@ -8,22 +8,25 @@ try {
 } catch (Exception $e) { die("Errore: " . $e->getMessage()); }
 
 $risultati = [];
+$erroreCliente = '';
 if (!empty($_GET['regione'])) {
     $cliente = trim($_GET['clienti'] ?? '');
     $regione = $_GET['regione'];
 
-    $sql = "SELECT * FROM clienti WHERE citta = ?";
-    $params = [$regione];
+    if ($cliente === '') {
+        $erroreCliente = 'Inserire il filtro per il cliente.';
+    } else {
+        $sql = "SELECT * FROM clienti WHERE citta = ?";
+        $params = [$regione];
 
-    if ($cliente !== '') {
         $sql .= " AND (CONCAT(nome, ' ', cognome) LIKE ? OR CONCAT(cognome, ' ', nome) LIKE ?)";
         $params[] = "%$cliente%";
         $params[] = "%$cliente%";
-    }
 
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute($params);
-    $risultati = $stmt->fetchAll();
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute($params);
+        $risultati = $stmt->fetchAll();
+    }
 }
 ?>
 
@@ -45,8 +48,14 @@ if (!empty($_GET['regione'])) {
     </style>
     <script>
         function valida() {
-            if (document.getElementById("r").value == "") {
-                alert("nessuna regione selezionata");
+            var regione = document.getElementById("r").value;
+            var cliente = document.getElementById("clienti").value.trim();
+            if (regione == "") {
+                alert("Nessuna regione selezionata");
+                return false;
+            }
+            if (cliente == "") {
+                alert("Inserire il filtro per il cliente");
                 return false;
             }
             return true;
@@ -65,7 +74,12 @@ if (!empty($_GET['regione'])) {
     </h2>
     <form method="GET" onsubmit="return valida()">
         <label>Nome e Cognome:</label>
-        <input type="text" name="clienti" placeholder="inserisci nome/cognome ..." value="<?= htmlspecialchars($_GET['clienti'] ?? '') ?>">
+        <input type="text" id="clienti" name="clienti" placeholder="inserisci nome/cognome ..." value="<?= htmlspecialchars($_GET['clienti'] ?? '') ?>">
+        <?php if ($erroreCliente !== ''): ?>
+            <div style="color: #d8000c; background: #ffd2d2; border: 1px solid #d8000c; padding: 8px; margin: 8px 0; border-radius: 4px;">
+                <?= htmlspecialchars($erroreCliente) ?>
+            </div>
+        <?php endif; ?>
         
         <label>Regione:</label>
         <select name="regione" id="r">
