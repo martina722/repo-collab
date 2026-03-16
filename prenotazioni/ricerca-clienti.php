@@ -1,45 +1,24 @@
 <?php
-$host = 'localhost';
-$db   = 'prenotazioni';
-$user = 'root';
-$pass = '';
-$charset = 'utf8mb4';
-
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
-
 try {
-    $pdo = new PDO($dsn, $user, $pass, $options);
-    $stmtRegioni = $pdo->query("SELECT regione FROM regioni ORDER BY regione ASC");
-    $elencoRegioni = $stmtRegioni->fetchAll();
-} catch (\PDOException $e) {
-    die("Errore di connessione: " . $e->getMessage());
-}
+    $pdo = new PDO("mysql:host=localhost;dbname=prenotazioni;charset=utf8mb4", "root", "", [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+    ]);
+    $elencoRegioni = $pdo->query("SELECT regione FROM regioni ORDER BY regione ASC")->fetchAll();
+} catch (Exception $e) { die("Errore: " . $e->getMessage()); }
 
 $risultati = [];
-$ricercaEffettuata = false;
+if (!empty($_GET['regione'])) {
+    $cliente = trim($_GET['clienti'] ?? '');
+    $regione = $_GET['regione'];
 
-if (!empty($_GET['clienti']) || !empty($_GET['regione'])) {
-    $ricercaEffettuata = true;
-    $clienteCercato = trim($_GET['clienti'] ?? '');
-    $regioneCercata = $_GET['regione'] ?? '';
+    $sql = "SELECT * FROM clienti WHERE citta = ?";
+    $params = [$regione];
 
-    $sql = "SELECT * FROM clienti WHERE 1=1";
-    $params = [];
-
-    if ($clienteCercato !== '') {
+    if ($cliente !== '') {
         $sql .= " AND (CONCAT(nome, ' ', cognome) LIKE ? OR CONCAT(cognome, ' ', nome) LIKE ?)";
-        $params[] = "%$clienteCercato%";
-        $params[] = "%$clienteCercato%";
-    }
-
-    if ($regioneCercata !== '') {
-        $sql .= " AND citta = ?"; 
-        $params[] = $regioneCercata;
+        $params[] = "%$cliente%";
+        $params[] = "%$cliente%";
     }
 
     $stmt = $pdo->prepare($sql);
@@ -53,80 +32,71 @@ if (!empty($_GET['clienti']) || !empty($_GET['regione'])) {
 <head>
     <meta charset="UTF-8">
     <title>Ricerca Clienti</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f4; padding: 20px; }
+        .container { background: white; max-width: 700px; margin: auto; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        input, select { padding: 8px; margin: 5px 0; width: 100%; box-sizing: border-box; }
+        button { background: #007bff; color: white; border: none; padding: 10px; cursor: pointer; border-radius: 4px; width: 100%; }
+        button:hover { background: #0056b3; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { text-align: left; padding: 12px; border-bottom: 1px solid #ddd; }
+        th { background: #f8f9fa; }
+        .reset { display: block; text-align: center; margin-top: 10px; color: #666; text-decoration: none; font-size: 14px; }
+    </style>
+    <script>
+        function valida() {
+            if (document.getElementById("r").value == "") {
+                alert("nessuna regione selezionata");
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
-<body style="font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f0f2f5; margin: 0; padding: 40px; display: flex; justify-content: center;">
+<body>
 
-    <div style="width: 100%; max-width: 900px; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+<div class="container">
+    <h2>Ricerca Clienti</h2>
+    <form method="GET" onsubmit="return valida()">
+        <label>Nome e Cognome:</label>
+        <input type="text" name="clienti" placeholder="inserisci nome/cognome ..." value="<?= htmlspecialchars($_GET['clienti'] ?? '') ?>">
         
-        <h2 style="color: #1a73e8; margin-top: 0; text-align: center; font-size: 28px;">Gestione Clienti</h2>
+        <label>Regione:</label>
+        <select name="regione" id="r">
+            <option value="">-- Seleziona regione --</option>
+            <?php foreach ($elencoRegioni as $reg): ?>
+                <option value="<?= $reg['regione'] ?>" <?= (isset($_GET['regione']) && $_GET['regione'] == $reg['regione']) ? 'selected' : '' ?>>
+                    <?= $reg['regione'] ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+        
+        <button type="submit">Cerca</button>
+        <a href="?" class="reset">Reset</a>
+    </form>
 
-        <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; border: 1px solid #e9ecef; margin-bottom: 30px;">
-            <form method="GET" action="" style="display: grid; grid-template-columns: 1fr 1fr auto; gap: 15px; align-items: end;">
-                
-                <div>
-                    <label style="display: block; font-weight: bold; margin-bottom: 8px; color: #555;">Nome/Cognome:</label>
-                    <input type="text" name="clienti" value="<?= htmlspecialchars($_GET['clienti'] ?? '') ?>" placeholder="Cerca cliente..." 
-                           style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box;">
-                </div>
-
-                <div>
-                    <label style="display: block; font-weight: bold; margin-bottom: 8px; color: #555;">Regione:</label>
-                    <select name="regione" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; background: white;">
-                        <option value="">-- Tutte le regioni --</option>
-                        <?php foreach ($elencoRegioni as $r): ?>
-                            <option value="<?= htmlspecialchars($r['regione']) ?>" <?= (isset($_GET['regione']) && $_GET['regione'] == $r['regione']) ? 'selected' : '' ?>>
-                                <?= htmlspecialchars($r['regione']) ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-
-                <div style="display: flex; gap: 10px;">
-                    <button type="submit" style="background: #1a73e8; color: white; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.3s;">Cerca</button>
-                    <a href="?" style="background: #dee2e6; color: #495057; padding: 12px 15px; border-radius: 6px; text-decoration: none; font-size: 14px; display: flex; align-items: center;">Reset</a>
-                </div>
-            </form>
-        </div>
-
-        <?php if ($ricercaEffettuata): ?>
-            <h3 style="border-left: 5px solid #1a73e8; padding-left: 15px; color: #333;">Risultati della ricerca</h3>
-            
-            <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
-                <thead>
-                    <tr style="background: #1a73e8; color: white;">
-                        <th style="padding: 15px; text-align: left; border-top-left-radius: 8px;">Nome Cognome</th>
-                        <th style="padding: 15px; text-align: left;">Regione (Città)</th>
-                        <th style="padding: 15px; text-align: left; border-top-right-radius: 8px;">Email</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php if (count($risultati) > 0): ?>
-                        <?php foreach ($risultati as $index => $row): ?>
-                            <tr style="background-color: <?= $index % 2 == 0 ? '#ffffff' : '#f8f9fa' ?>; border-bottom: 1px solid #eee;">
-                                <td style="padding: 15px; font-weight: 500; color: #2c3e50;">
-                                    <?= htmlspecialchars($row['nome'] . ' ' . $row['cognome']) ?>
-                                </td>
-                                <td style="padding: 15px;">
-                                    <span style="background: #e8f0fe; color: #1a73e8; padding: 5px 12px; border-radius: 20px; font-size: 13px; font-weight: bold;">
-                                        <?= htmlspecialchars($row['citta'] ?? 'N/D') ?>
-                                    </span>
-                                </td>
-                                <td style="padding: 15px; color: #666; font-style: italic;">
-                                    <?= htmlspecialchars($row['email'] ?? 'N/D') ?>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php else: ?>
+    <?php if (isset($_GET['regione'])): ?>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome e cognome</th>
+                    <th>Regione</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if ($risultati): ?>
+                    <?php foreach ($risultati as $row): ?>
                         <tr>
-                            <td colspan="3" style="padding: 30px; text-align: center; color: #999; font-style: italic;">
-                                ❌ Nessun cliente trovato con questi criteri.
-                            </td>
+                            <td><?= htmlspecialchars($row['nome'] . " " . $row['cognome']) ?></td>
+                            <td><?= htmlspecialchars($row['citta']) ?></td>
                         </tr>
-                    <?php endif; ?>
-                </tbody>
-            </table>
-        <?php endif; ?>
-
-    </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr><td colspan="2">Nessun risultato trovato.</td></tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    <?php endif; ?>
+</div>
 </body>
 </html>
