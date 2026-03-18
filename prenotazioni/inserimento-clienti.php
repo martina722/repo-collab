@@ -25,7 +25,7 @@
         body { font-family: sans-serif; margin: 20px; }
         form { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
         .form-group { margin-bottom: 15px; display: flex; align-items: center; gap: 5px; }
-        label { display: inline-block; width: 80px; }
+        label { display: inline-block; }
         .buttons { border: none ;}
         .btn-salva { background-color: green; }
         .btn-annulla { background-color: red; }
@@ -38,9 +38,9 @@
 
     <form method="POST">
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required placeholder="Inserisci il nome"><br>
+        <input type="text" id="nome" name="nome" required placeholder="Inserisci il nome">
         <label for="cognome">Cognome:</label>
-        <input type="text" id="cognome" name="cognome" required placeholder="Inserisci il cognome"><br>
+        <input type="text" id="cognome" name="cognome" required placeholder="Inserisci il cognome">
         <label for="citta">Città:</label>
         <select id="citta" name="citta" required>
             <option value="">-- Seleziona Città --</option>
@@ -53,7 +53,7 @@
                     echo "<option value=''>Nessuna città trovata</option>";
                 }
             ?>
-        </select><br>
+        </select>
         <button type="reset" class="btn-annulla" onclick="document.querySelector('form').reset();">Annulla</button>
         <button type="submit" class="btn-salva">Salva</button>
     </form>
