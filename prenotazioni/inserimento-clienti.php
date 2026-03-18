@@ -81,9 +81,11 @@
             if ($result) {
                 echo "<p style='color:green;'>Cliente inserito con successo!</p>";
             } else {
-                echo "<p style='color:red;'>Errore nell'inserimento del cliente: " . mysqli_error($db_connection) . "</p>";
+                echo "<p style='color:red;'>Errore nell'inserimento del cliente: " . mysqli_error($conn) . "</p>";
             }
          }
+        
+        
     ?>
 
 </body>
