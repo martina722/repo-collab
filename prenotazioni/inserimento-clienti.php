@@ -1,5 +1,4 @@
 <?php
-// 1. Logica di connessione e recupero dati (in cima)
 $host = "localhost";
 $user = "root";
 $pass = "";
@@ -24,11 +23,12 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="style.css">
     <style>
         body { font-family: sans-serif; margin: 20px; }
-        .form-group { margin-bottom: 15px; }
+        form { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+        .form-group { margin-bottom: 15px; display: flex; align-items: center; gap: 5px; }
         label { display: inline-block; width: 80px; }
-        .buttons { text-decoration: none; margin: 0;}
-        .btn-salva { background-color: green ;}
-        .btn-annulla { background-color: red ;}
+        .buttons { border: none ;}
+        .btn-salva { background-color: green; }
+        .btn-annulla { background-color: red; }
     </style>
 </head>
 <body>
@@ -63,15 +63,15 @@ $result = $conn->query($sql);
                 ?>
             </select>
         </div>
-        
-        
+        <div class="buttons">
+            <button type="reset" class="btn-annulla">Annulla</button>
+            <button type="submit" class="btn-salva">Salva</button>
+        </div>      
     </form>
+
     <?php
     $conn->close();
     ?>
+
 </body>
-<div class="buttons">
-    <button type="reset" class="btn-annulla">Annulla</button>
-    <button type="submit" class="btn-salva">Salva</button>
-</div>
 </html>
