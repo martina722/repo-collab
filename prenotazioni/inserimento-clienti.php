@@ -38,9 +38,9 @@
 
     <form method="POST">
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required><br>
+        <input type="text" id="nome" name="nome" required placeholder="Inserisci il nome"><br>
         <label for="cognome">Cognome:</label>
-        <input type="text" id="cognome" name="cognome" required><br>
+        <input type="text" id="cognome" name="cognome" required placeholder="Inserisci il cognome"><br>
         <label for="citta">Città:</label>
         <select id="citta" name="citta" required>
             <option value="">-- Seleziona Città --</option>
