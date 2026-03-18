@@ -36,7 +36,7 @@
     <h1>Inserimento clienti</h1>
     <h2>Dati</h2>
 
-    <form method="POST">
+    <form method="POST" action="inserimento-clienti.php">
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" required placeholder="Inserisci il nome">
         <label for="cognome">Cognome:</label>
